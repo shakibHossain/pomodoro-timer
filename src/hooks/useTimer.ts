@@ -2,15 +2,25 @@ import { useReducer, useEffect } from "react";
 import { timerReducer } from "@/lib/timerReducer";
 import { TimerState } from "@/types";
 
-const initialState: TimerState = {
-  totalSecondsRemaining: 1500,
-  totalSecondsInSession: 1500,
-  mode: "work",
-  status: "idle",
-  sessionCount: 0,
-};
+interface TimerOptions {
+  workDuration: number;
+  shortBreakDuration: number;
+  longBreakDuration: number;
+}
 
-export function useTimer() {
+export function useTimer({
+  workDuration,
+  shortBreakDuration,
+  longBreakDuration,
+}: TimerOptions) {
+  const initialState: TimerState = {
+    totalSecondsRemaining: workDuration,
+    totalSecondsInSession: workDuration,
+    mode: "work",
+    status: "idle",
+    sessionCount: 0,
+  };
+
   const [state, dispatch] = useReducer(timerReducer, initialState);
 
   // run the interval when running
@@ -30,13 +40,23 @@ export function useTimer() {
       dispatch({
         type: "COMPLETE",
         payload: {
-          workDuration: 1500,
-          shortBreakDuration: 300,
-          longBreakDuration: 600,
+          workDuration,
+          shortBreakDuration,
+          longBreakDuration,
         },
       });
     }
   }, [state.totalSecondsRemaining, state.status]);
+
+  useEffect(() => {
+    dispatch({
+      type: "SWITCH_MODE",
+      payload: {
+        mode: "work",
+        totalSecondsInSession: workDuration,
+      },
+    });
+  }, [workDuration, shortBreakDuration, longBreakDuration]);
 
   return { state, dispatch };
 }
