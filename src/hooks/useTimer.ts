@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import { timerReducer } from "@/lib/timerReducer";
 import { TimerState } from "@/types";
+import { useNotification } from "./useNotification";
 
 interface TimerOptions {
   workDuration: number;
@@ -13,6 +14,8 @@ export function useTimer({
   shortBreakDuration,
   longBreakDuration,
 }: TimerOptions) {
+  const { notify } = useNotification();
+
   const initialState: TimerState = {
     totalSecondsRemaining: workDuration,
     totalSecondsInSession: workDuration,
@@ -45,6 +48,10 @@ export function useTimer({
           longBreakDuration,
         },
       });
+      notify(
+        "Session complete!",
+        `Time for a ${state.mode === "work" ? "break" : "work session"}`
+      );
     }
   }, [state.totalSecondsRemaining, state.status]);
 

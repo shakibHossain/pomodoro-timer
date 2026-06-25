@@ -1,3 +1,4 @@
+import { useNotification } from "@/hooks/useNotification";
 import { TimerAction, TimerStatus } from "@/types";
 
 interface TimerControlProps {
@@ -5,12 +6,17 @@ interface TimerControlProps {
   dispatch: React.Dispatch<TimerAction>;
 }
 const TimerControls = ({ status, dispatch }: TimerControlProps) => {
+  const { requestPermission } = useNotification();
+
   return (
     <div className="flex gap-3">
       {(status === "idle" || status === "complete") && (
         <button
           className="px-6 py-3 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
-          onClick={() => dispatch({ type: "START" })}
+          onClick={() => {
+            requestPermission();
+            dispatch({ type: "START" });
+          }}
         >
           Start
         </button>

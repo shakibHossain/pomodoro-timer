@@ -7,7 +7,7 @@ import TimerControls from "@/components/TimerControls";
 import TimerDisplay from "@/components/TimerDisplay";
 import { useSettings } from "@/context/SettingsContext";
 import { useTimer } from "@/hooks/useTimer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -17,6 +17,17 @@ export default function Home() {
     shortBreakDuration: settings.shortBreak,
     longBreakDuration: settings.longBreak,
   });
+
+  useEffect(() => {
+    const minutes = Math.floor(state.totalSecondsRemaining / 60);
+    const seconds = state.totalSecondsRemaining % 60;
+
+    document.title = `${String(minutes).padStart(2, "0")}:${String(
+      seconds
+    ).padStart(2, "0")} - ${
+      state.mode.charAt(0).toUpperCase() + state.mode.slice(1)
+    }`;
+  }, [state.totalSecondsRemaining, state.mode]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4">
