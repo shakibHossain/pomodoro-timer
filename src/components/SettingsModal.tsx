@@ -14,21 +14,21 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 flex items-center justify-center"
+      className="fixed inset-0 bg-black/40 flex items-center justify-center"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl p-6 w-full max-w-sm mx-4"
+        className="bg-[#e8ddc4] rounded-2xl p-6 w-full max-w-sm mx-4 border border-[#c9bb95]"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-gray-900 text-lg font-semibold mb-6">Settings</h2>
+        <h2 className="text-[#1a1a1a] text-lg font-semibold mb-6">Settings</h2>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#6b6354] mb-1">
             Work Duration (minutes)
           </label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none"
+            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
             value={localSettings.workDuration / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -41,12 +41,12 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#6b6354] mb-1">
             Short Break (minutes)
           </label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none"
+            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
             value={localSettings.shortBreak / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -59,12 +59,12 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#6b6354] mb-1">
             Long Break (minutes)
           </label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none"
+            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
             value={localSettings.longBreak / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -77,12 +77,12 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-[#6b6354] mb-1">
             Sessions before long break
           </label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none"
+            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
             value={localSettings.breakAfterSessionCount}
             onChange={(e) =>
               setLocalSettings({
@@ -94,21 +94,23 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
             max={10}
           />
         </div>
-        <button
-          className="px-3 py-1 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
-          onClick={() => {
-            updateSettings(localSettings);
-            onClose();
-          }}
-        >
-          Save
-        </button>
-        <button
-          className="px-3 py-1 mx-3 rounded-full font-medium transition-colors bg-gray-500 hover:bg-gray-600 text-white"
-          onClick={onClose}
-        >
-          Cancel
-        </button>
+        <div className="flex gap-3 mt-6">
+          <button
+            className="px-4 py-2 rounded-full bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a] text-sm font-medium transition-colors"
+            onClick={() => {
+              updateSettings(localSettings);
+              onClose();
+            }}
+          >
+            Save
+          </button>
+          <button
+            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#6b6354] hover:text-[#1a1a1a] text-sm transition-colors"
+            onClick={onClose}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

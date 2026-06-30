@@ -25,6 +25,13 @@ export default function TimerDisplay({
   const circumference = 2 * Math.PI * radius;
   const progress = totalSecondsRemaining / totalSecondsInSession;
   const strokeDashoffset = circumference * (1 - progress);
+
+  const ringColors: Record<TimerMode, string> = {
+    work: "#d4795a",
+    "short-break": "#7a9b76",
+    "long-break": "#6b8caf",
+  };
+
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <div className="relative">
@@ -35,7 +42,7 @@ export default function TimerDisplay({
             cy={140}
             r={radius}
             fill="none"
-            stroke="#e5e7eb"
+            stroke="#ddd0ac"
             strokeWidth={8}
           />
           {/* progress circle */}
@@ -44,7 +51,7 @@ export default function TimerDisplay({
             cy={140}
             r={radius}
             fill="none"
-            stroke="#ef4444"
+            stroke={ringColors[mode]}
             strokeWidth={8}
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
@@ -54,8 +61,10 @@ export default function TimerDisplay({
 
         {/* time in center */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-5xl font-bold">{formattedTime}</span>
-          <span className="text-sm text-gray-500 mt-1 capitalize">{mode}</span>
+          <span className="text-5xl font-bold text-[#1a1a1a]">
+            {formattedTime}
+          </span>
+          <span className="text-sm text-[#6b6354] mt-1 capitalize">{mode}</span>
         </div>
       </div>
     </div>

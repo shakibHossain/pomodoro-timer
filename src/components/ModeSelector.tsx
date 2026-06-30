@@ -16,12 +16,12 @@ const ModeSelector = ({
   longBreakDuration,
 }: ModeSelectorProps) => {
   return (
-    <div className="flex gap-1 bg-gray-200 p-1 rounded-full">
+    <div className="flex gap-1 bg-[#ddd0ac] p-1 rounded-full border border-[#c9bb95]">
       <button
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "work"
-            ? "bg-white text-gray-900"
-            : "text-gray-500 hover:text-gray-900"
+            ? "bg-[#e8ddc4] text-[#1a1a1a]"
+            : "text-[#6b6354] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({
@@ -35,8 +35,8 @@ const ModeSelector = ({
       <button
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "short-break"
-            ? "bg-white text-gray-900"
-            : "text-gray-500 hover:text-gray-900"
+            ? "bg-[#e8ddc4] text-[#1a1a1a]"
+            : "text-[#6b6354] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({
@@ -53,8 +53,8 @@ const ModeSelector = ({
       <button
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "long-break"
-            ? "bg-white text-gray-900"
-            : "text-gray-500 hover:text-gray-900"
+            ? "bg-[#e8ddc4] text-[#1a1a1a]"
+            : "text-[#6b6354] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({

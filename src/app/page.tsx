@@ -51,7 +51,7 @@ export default function Home() {
         <TimerControls status={state.status} dispatch={dispatch} />
       </div>
       <button
-        className="px-6 py-3 rounded-full font-medium transition-colors bg-gray-500 hover:bg-blue-600 text-white"
+        className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
         onClick={() => setIsSettingsOpen(true)}
       >
         Settings

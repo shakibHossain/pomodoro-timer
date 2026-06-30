@@ -10,7 +10,7 @@ const SessionDots = ({ sessionCount, cycleLength }: SessionDotsProps) => {
         <div
           key={i}
           className={`w-3 h-3 rounded-full ${
-            i < sessionCount % cycleLength ? "bg-white" : "bg-white/30"
+            i < sessionCount % cycleLength ? "bg-[#d4795a]" : "bg-[#c9bb95]"
           }`}
         ></div>
       ))}

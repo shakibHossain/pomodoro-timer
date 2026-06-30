@@ -12,7 +12,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
     <div className="flex gap-3">
       {(status === "idle" || status === "complete") && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
+          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a]"
           onClick={() => {
             requestPermission();
             dispatch({ type: "START" });
@@ -23,7 +23,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {status === "running" && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
+          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
           onClick={() => dispatch({ type: "PAUSE" })}
         >
           Pause
@@ -31,7 +31,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {status === "paused" && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
+          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a]"
           onClick={() => dispatch({ type: "RESUME" })}
         >
           Resume
@@ -39,7 +39,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {(status === "paused" || status === "complete") && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-blue-500 hover:bg-blue-600 text-white"
+          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
           onClick={() => dispatch({ type: "RESET" })}
         >
           Reset
