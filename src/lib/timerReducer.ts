@@ -30,7 +30,8 @@ export function timerReducer(
         totalSecondsRemaining: state.totalSecondsRemaining - 1,
       };
     case "COMPLETE": {
-      const newSessionCount = state.sessionCount + 1;
+      const newSessionCount =
+        state.mode === "work" ? state.sessionCount + 1 : state.sessionCount;
 
       const nextMode =
         state.mode !== "work"

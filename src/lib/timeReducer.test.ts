@@ -50,6 +50,15 @@ describe("timerReducer", () => {
     expect(newState.mode).toBe("short-break");
     expect(newState.totalSecondsRemaining).toEqual(300);
   });
+  it("COMPLETE does not increment sessionCount after a break", () => {
+  const breakState: TimerState = { ...initialState, mode: 'short-break' }
+  const newState = timerReducer(breakState, {
+    type: "COMPLETE",
+    payload: { workDuration: 1500, shortBreakDuration: 300, longBreakDuration: 600 },
+  })
+  expect(newState.sessionCount).toBe(breakState.sessionCount)
+  expect(newState.mode).toBe('work')
+})
   it("SWITCH_MODE updates mode and resets seconds", () => {
     const newState = timerReducer(initialState, {
       type: "SWITCH_MODE",
