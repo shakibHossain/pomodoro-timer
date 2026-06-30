@@ -1,5 +1,5 @@
 import { useSettings } from "@/context/SettingsContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -9,6 +9,10 @@ interface SettingsModalProps {
 const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
   const { settings, updateSettings } = useSettings();
   const [localSettings, setLocalSettings] = useState(settings);
+
+  useEffect(() => {
+    setLocalSettings(settings);
+  }, [settings]);
 
   if (!isOpen) return null;
 

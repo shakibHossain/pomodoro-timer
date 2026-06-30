@@ -15,16 +15,18 @@ const defaultSettings: Settings = {
 interface SettingsContextType {
   settings: Settings;
   updateSettings: (newSettings: Partial<Settings>) => void;
+  isLoaded: boolean;
 }
 
 const SettingsContext = createContext<SettingsContextType>({
   settings: defaultSettings,
   updateSettings: () => {},
+  isLoaded: false,
 });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   // const [settings, setSettings] = useState<Settings>(defaultSettings);
-  const [settings, setSettings] = useLocalStorage<Settings>(
+  const [settings, setSettings, isLoaded] = useLocalStorage<Settings>(
     "pomodoro-settings",
     defaultSettings
   );
@@ -35,7 +37,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <SettingsContext.Provider value={{ settings, updateSettings }}>
+    <SettingsContext.Provider value={{ settings, updateSettings, isLoaded }}>
       {children}
     </SettingsContext.Provider>
   );

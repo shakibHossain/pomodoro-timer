@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const { settings } = useSettings();
+  const { settings, isLoaded } = useSettings();
   const { state, dispatch } = useTimer({
     workDuration: settings.workDuration,
     shortBreakDuration: settings.shortBreak,
@@ -28,6 +28,14 @@ export default function Home() {
       state.mode.charAt(0).toUpperCase() + state.mode.slice(1)
     }`;
   }, [state.totalSecondsRemaining, state.mode]);
+
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center min-h-screen text-[#6b6354]">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-4">
