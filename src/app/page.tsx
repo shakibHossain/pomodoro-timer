@@ -1,5 +1,6 @@
 "use client";
 
+import ConfirmModal from "@/components/ConfirmModal";
 import ModeSelector from "@/components/ModeSelector";
 import SessionDots from "@/components/SessionDots";
 import SettingsModal from "@/components/SettingsModal";
@@ -11,6 +12,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [confirmingReset, setConfirmingReset] = useState(false);
   const { settings, isLoaded } = useSettings();
   const { state, dispatch } = useTimer({
     workDuration: settings.workDuration,
@@ -38,7 +40,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+    <div className="flex flex-col items-center justify-center flex-1 gap-4">
       <ModeSelector
         mode={state.mode}
         dispatch={dispatch}
@@ -46,10 +48,31 @@ export default function Home() {
         shortBreakDuration={settings.shortBreak}
         longBreakDuration={settings.longBreak}
       />
-      <SessionDots
-        sessionCount={state.sessionCount}
-        cycleLength={settings.breakAfterSessionCount}
-      />
+      <div className="flex flex-col items-center gap-1">
+        <SessionDots
+          sessionCount={state.sessionCount}
+          cycleLength={settings.breakAfterSessionCount}
+        />
+        <p className="text-xs text-[#6b6354]">until long break</p>
+      </div>
+
+      <div className="flex flex-col items-center gap-1">
+        <div className="flex items-center gap-2 text-sm text-[#6b6354]">
+          <span>
+            {state.sessionCount > 0 || state.totalPomodorosCompleted > 0
+              ? `${state.totalPomodorosCompleted} / ${settings.dailyGoal} Pomodoros`
+              : `0 / ${settings.dailyGoal} Pomodoros`}
+          </span>
+          <button
+            onClick={() => setConfirmingReset(true)}
+            className="text-xs px-2 py-1 rounded-full border border-[#c9bb95] text-p[#6b6354] hover:text-[#1a1a1a] hover:border-[#1a1a1a] transition-colors"
+          >
+            Reset
+          </button>
+        </div>
+        <p className="text-xs text-[#6b6354]">today's total</p>
+      </div>
+
       <TimerDisplay
         totalSecondsRemaining={state.totalSecondsRemaining}
         totalSecondsInSession={state.totalSecondsInSession}
@@ -67,6 +90,17 @@ export default function Home() {
       <SettingsModal
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
+      />
+      <ConfirmModal
+        isOpen={confirmingReset}
+        title="Reset count?"
+        message="This will reset your Pomodoro count to 0."
+        confirmLabel="Reset"
+        onConfirm={() => {
+          dispatch({ type: "RESET_POMODORO_COUNT" });
+          setConfirmingReset(false);
+        }}
+        onClose={() => setConfirmingReset(false)}
       />
     </div>
   );

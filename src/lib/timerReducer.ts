@@ -23,6 +23,8 @@ export function timerReducer(
         status: "idle",
         totalSecondsRemaining: state.totalSecondsInSession,
       };
+    case "RESET_POMODORO_COUNT":
+      return { ...state, totalPomodorosCompleted: 0, sessionCount: 0 };
     case "TICK":
       // decrease time remaning by 1
       return {
@@ -30,8 +32,13 @@ export function timerReducer(
         totalSecondsRemaining: state.totalSecondsRemaining - 1,
       };
     case "COMPLETE": {
-      const newSessionCount =
-        state.mode === "work" ? state.sessionCount + 1 : state.sessionCount;
+      const isWorkSession = state.mode === "work";
+      const newSessionCount = isWorkSession
+        ? state.sessionCount + 1
+        : state.sessionCount;
+      const newTotalCompleted = isWorkSession
+        ? state.totalPomodorosCompleted + 1
+        : state.totalPomodorosCompleted;
 
       const nextMode =
         state.mode !== "work"
@@ -51,6 +58,7 @@ export function timerReducer(
         ...state,
         status: "idle",
         sessionCount: newSessionCount,
+        totalPomodorosCompleted: newTotalCompleted,
         mode: nextMode,
         totalSecondsInSession: nextDuration,
         totalSecondsRemaining: nextDuration,

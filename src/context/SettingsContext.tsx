@@ -10,6 +10,7 @@ const defaultSettings: Settings = {
   longBreak: 600, // 10 minutes
   breakAfterSessionCount: 4,
   displayMode: "dark",
+  dailyGoal: 8,
 };
 
 interface SettingsContextType {

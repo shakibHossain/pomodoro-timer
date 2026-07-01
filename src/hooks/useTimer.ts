@@ -22,6 +22,7 @@ export function useTimer({
     mode: "work",
     status: "idle",
     sessionCount: 0,
+    totalPomodorosCompleted: 0,
   };
 
   const [state, dispatch] = useReducer(timerReducer, initialState);

@@ -16,6 +16,7 @@ export interface TimerState {
   mode: TimerMode;
   status: TimerStatus;
   sessionCount: number;
+  totalPomodorosCompleted: number;
 }
 
 export interface Settings {
@@ -24,6 +25,7 @@ export interface Settings {
   longBreak: number;
   breakAfterSessionCount: number;
   displayMode: DisplayMode;
+  dailyGoal: number;
 }
 
 export type TimerAction =
@@ -31,6 +33,7 @@ export type TimerAction =
   | { type: "PAUSE" }
   | { type: "RESUME" }
   | { type: "RESET" }
+  | { type: "RESET_POMODORO_COUNT" }
   | {
       type: "SWITCH_MODE";
       payload: { mode: TimerMode; totalSecondsInSession: number };

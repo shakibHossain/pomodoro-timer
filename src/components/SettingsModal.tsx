@@ -28,6 +28,24 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
         <h2 className="text-[#1a1a1a] text-lg font-semibold mb-6">Settings</h2>
         <div className="mb-4">
           <label className="block text-sm font-medium text-[#6b6354] mb-1">
+            Daily Goal (pomodoros)
+          </label>
+          <input
+            type="number"
+            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            value={localSettings.dailyGoal}
+            onChange={(e) =>
+              setLocalSettings({
+                ...localSettings,
+                dailyGoal: Number(e.target.value),
+              })
+            }
+            min={1}
+            max={20}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-[#6b6354] mb-1">
             Work Duration (minutes)
           </label>
           <input
@@ -100,6 +118,12 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
         </div>
         <div className="flex gap-3 mt-6">
           <button
+            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#6b6354] hover:text-[#1a1a1a] text-sm transition-colors"
+            onClick={onClose}
+          >
+            Cancel
+          </button>
+          <button
             className="px-4 py-2 rounded-full bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a] text-sm font-medium transition-colors"
             onClick={() => {
               updateSettings(localSettings);
@@ -107,12 +131,6 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
             }}
           >
             Save
-          </button>
-          <button
-            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#6b6354] hover:text-[#1a1a1a] text-sm transition-colors"
-            onClick={onClose}
-          >
-            Cancel
           </button>
         </div>
       </div>
