@@ -64,7 +64,7 @@ export default function TimerDisplay({
           <span className="text-5xl font-bold text-[#1a1a1a]">
             {formattedTime}
           </span>
-          <span className="text-sm text-[#6b6354] mt-1 capitalize">{mode}</span>
+          <span className="text-sm text-[#4a4035] mt-1 capitalize">{mode}</span>
         </div>
       </div>
     </div>

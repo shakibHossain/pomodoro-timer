@@ -27,7 +27,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
       >
         <h2 className="text-[#1a1a1a] text-lg font-semibold mb-6">Settings</h2>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#6b6354] mb-1">
+          <label className="block text-sm font-medium text-[#4a4035] mb-1">
             Daily Goal (pomodoros)
           </label>
           <input
@@ -45,7 +45,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#6b6354] mb-1">
+          <label className="block text-sm font-medium text-[#4a4035] mb-1">
             Work Duration (minutes)
           </label>
           <input
@@ -63,7 +63,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#6b6354] mb-1">
+          <label className="block text-sm font-medium text-[#4a4035] mb-1">
             Short Break (minutes)
           </label>
           <input
@@ -81,7 +81,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#6b6354] mb-1">
+          <label className="block text-sm font-medium text-[#4a4035] mb-1">
             Long Break (minutes)
           </label>
           <input
@@ -99,7 +99,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#6b6354] mb-1">
+          <label className="block text-sm font-medium text-[#4a4035] mb-1">
             Sessions before long break
           </label>
           <input
@@ -118,7 +118,7 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
         </div>
         <div className="flex gap-3 mt-6">
           <button
-            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#6b6354] hover:text-[#1a1a1a] text-sm transition-colors"
+            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#4a4035] hover:text-[#1a1a1a] text-sm transition-colors"
             onClick={onClose}
           >
             Cancel

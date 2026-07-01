@@ -21,7 +21,7 @@ const ModeSelector = ({
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "work"
             ? "bg-[#e8ddc4] text-[#1a1a1a]"
-            : "text-[#6b6354] hover:text-[#1a1a1a]"
+            : "text-[#4a4035] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({
@@ -36,7 +36,7 @@ const ModeSelector = ({
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "short-break"
             ? "bg-[#e8ddc4] text-[#1a1a1a]"
-            : "text-[#6b6354] hover:text-[#1a1a1a]"
+            : "text-[#4a4035] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({
@@ -54,7 +54,7 @@ const ModeSelector = ({
         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
           mode === "long-break"
             ? "bg-[#e8ddc4] text-[#1a1a1a]"
-            : "text-[#6b6354] hover:text-[#1a1a1a]"
+            : "text-[#4a4035] hover:text-[#1a1a1a]"
         }`}
         onClick={() =>
           dispatch({

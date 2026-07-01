@@ -4,7 +4,7 @@ const Navbar = () => {
       <span className="font-medium text-lg">Pomodoro Timer</span>
       <a
         href="https://github.com"
-        className="text-sm text-[#6b6354]  hover:text-[#1a1a1a] transition-colors"
+        className="text-sm text-[#4a4035]  hover:text-[#1a1a1a] transition-colors"
         target="_blank"
       >
         Github

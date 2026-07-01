@@ -74,14 +74,14 @@ export default function Home() {
 
   if (!isLoaded) {
     return (
-      <div className="flex items-center justify-center min-h-screen text-[#6b6354]">
+      <div className="flex items-center justify-center min-h-screen text-[#4a4035]">
         Loading...
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center flex-1 gap-4">
+    <main className="flex flex-col items-center justify-center flex-1 gap-4">
       <ModeSelector
         mode={state.mode}
         dispatch={dispatch}
@@ -94,11 +94,11 @@ export default function Home() {
           sessionCount={state.sessionCount}
           cycleLength={settings.breakAfterSessionCount}
         />
-        <p className="text-xs text-[#6b6354]">until long break</p>
+        <p className="text-xs text-[#4a4035]">until long break</p>
       </div>
 
       <div className="flex flex-col items-center gap-1">
-        <div className="flex items-center gap-2 text-sm text-[#6b6354]">
+        <div className="flex items-center gap-2 text-sm text-[#4a4035]">
           <span>
             {state.sessionCount > 0 || state.totalPomodorosCompleted > 0
               ? `${state.totalPomodorosCompleted} / ${settings.dailyGoal} Pomodoros`
@@ -111,7 +111,7 @@ export default function Home() {
             Reset
           </button>
         </div>
-        <p className="text-xs text-[#6b6354]">today's total</p>
+        <p className="text-xs text-[#4a4035]">today's total</p>
       </div>
 
       <TimerDisplay
@@ -143,6 +143,6 @@ export default function Home() {
         }}
         onClose={() => setConfirmingReset(false)}
       />
-    </div>
+    </main>
   );
 }

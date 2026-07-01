@@ -27,10 +27,10 @@ const ConfirmModal = ({
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-[#1a1a1a] text-lg font-semibold mb-2">{title}</h2>
-        <p className="text-[#6b6354] text-sm mb-6">{message}</p>
+        <p className="text-[#4a4035] text-sm mb-6">{message}</p>
         <div className="flex gap-3">
           <button
-            className="flex-1 px-4 py-2 rounded-full border border-[#c9bb95] text-[#6b6354] text-sm hover:text-[#1a1a1a] transition-colors"
+            className="flex-1 px-4 py-2 rounded-full border border-[#c9bb95] text-[#4a4035] text-sm hover:text-[#1a1a1a] transition-colors"
             onClick={onClose}
           >
             Cancel
