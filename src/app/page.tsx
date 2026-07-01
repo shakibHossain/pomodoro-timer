@@ -31,6 +31,47 @@ export default function Home() {
     }`;
   }, [state.totalSecondsRemaining, state.mode]);
 
+  useEffect(() => {
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement) return;
+
+      if (e.code === "Space") {
+        e.preventDefault();
+        if (state.status === "running") dispatch({ type: "PAUSE" });
+        else if (state.status === "paused") dispatch({ type: "RESUME" });
+        else dispatch({ type: "START" });
+      }
+      if (e.key === "r" || e.key === "R") dispatch({ type: "RESET" });
+      if (e.key === "1")
+        dispatch({
+          type: "SWITCH_MODE",
+          payload: {
+            mode: "work",
+            totalSecondsInSession: settings.workDuration,
+          },
+        });
+      if (e.key === "2")
+        dispatch({
+          type: "SWITCH_MODE",
+          payload: {
+            mode: "short-break",
+            totalSecondsInSession: settings.shortBreak,
+          },
+        });
+      if (e.key === "3")
+        dispatch({
+          type: "SWITCH_MODE",
+          payload: {
+            mode: "long-break",
+            totalSecondsInSession: settings.longBreak,
+          },
+        });
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => window.removeEventListener("keydown", handleKeydown);
+  }, [state.status, settings, dispatch]);
+
   if (!isLoaded) {
     return (
       <div className="flex items-center justify-center min-h-screen text-[#6b6354]">
