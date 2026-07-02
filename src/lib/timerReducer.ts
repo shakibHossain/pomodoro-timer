@@ -46,6 +46,8 @@ export function timerReducer(
           : newSessionCount % action.payload.breakAfterSessionCount === 0
           ? "long-break" // every 4th session -> long break
           : "short-break"; // otherwise -> short break
+        
+      const nextSessionCount = state.mode === 'long-break' ? 0 : newSessionCount
 
       const nextDuration =
         nextMode === "work"
@@ -57,7 +59,7 @@ export function timerReducer(
       return {
         ...state,
         status: "idle",
-        sessionCount: newSessionCount,
+        sessionCount: nextSessionCount,
         totalPomodorosCompleted: newTotalCompleted,
         mode: nextMode,
         totalSecondsInSession: nextDuration,
