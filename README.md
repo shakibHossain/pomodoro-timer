@@ -2,6 +2,10 @@
 
 A clean, focused Pomodoro timer built using React, Next.js, TypeScript, and Tailwind CSS.
 
+**[Live Demo](https://pomodoro-timer-mylo4.vercel.app/)** · **[GitHub](https://github.com/shakibHossain/pomodoro-timer)**
+
+![Pomodoro Timer Screenshot](/screenshot.png)
+
 ## Features
 
 - **Pomodoro timer** — work sessions, short breaks, long breaks

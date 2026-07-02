@@ -3,7 +3,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between px-6 py-4 border-b border-[#c9bb95]">
       <span className="font-medium text-lg">Pomodoro Timer</span>
       <a
-        href="https://github.com"
+        href="https://github.com/shakibHossain/pomodoro-timer"
         className="text-sm text-[#4a4035]  hover:text-[#1a1a1a] transition-colors"
         target="_blank"
       >
