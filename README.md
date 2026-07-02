@@ -4,7 +4,7 @@ A clean, focused Pomodoro timer built using React, Next.js, TypeScript, and Tail
 
 **[Live Demo](https://pomodoro-timer-mylo4.vercel.app/)** · **[GitHub](https://github.com/shakibHossain/pomodoro-timer)**
 
-![Pomodoro Timer Screenshot](/screenshot.png)
+![Pomodoro Timer Screenshot](public/screenshot.png)
 
 ## Features
 
