@@ -8,6 +8,7 @@ import TimerControls from "@/components/TimerControls";
 import TimerDisplay from "@/components/TimerDisplay";
 import { useSettings } from "@/context/SettingsContext";
 import { useTimer } from "@/hooks/useTimer";
+import { styles } from "@/lib/styles";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -100,13 +101,11 @@ export default function Home() {
       <div className="flex flex-col items-center gap-1">
         <div className="flex items-center gap-2 text-sm text-[#4a4035]">
           <span>
-            {state.sessionCount > 0 || state.totalPomodorosCompleted > 0
-              ? `${state.totalPomodorosCompleted} / ${settings.dailyGoal} Pomodoros`
-              : `0 / ${settings.dailyGoal} Pomodoros`}
+            {`${state.totalPomodorosCompleted} / ${settings.dailyGoal} Pomodoros`}
           </span>
           <button
             onClick={() => setConfirmingReset(true)}
-            className="text-xs px-2 py-1 rounded-full border border-[#c9bb95] text-p[#6b6354] hover:text-[#1a1a1a] hover:border-[#1a1a1a] transition-colors"
+            className={styles.btnOutlineSmall}
           >
             Reset
           </button>
@@ -123,7 +122,7 @@ export default function Home() {
         <TimerControls status={state.status} dispatch={dispatch} />
       </div>
       <button
-        className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
+        className={styles.btnSecondary}
         onClick={() => setIsSettingsOpen(true)}
       >
         Settings

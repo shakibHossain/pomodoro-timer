@@ -1,4 +1,5 @@
 import { useSettings } from "@/context/SettingsContext";
+import { styles } from "@/lib/styles";
 import { useEffect, useState } from "react";
 
 interface SettingsModalProps {
@@ -17,22 +18,14 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 bg-black/40 flex items-center justify-center"
-      onClick={onClose}
-    >
-      <div
-        className="bg-[#e8ddc4] rounded-2xl p-6 w-full max-w-sm mx-4 border border-[#c9bb95]"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className={styles.modalBackdrop} onClick={onClose}>
+      <div className={styles.modalBox} onClick={(e) => e.stopPropagation()}>
         <h2 className="text-[#1a1a1a] text-lg font-semibold mb-6">Settings</h2>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#4a4035] mb-1">
-            Daily Goal (pomodoros)
-          </label>
+          <label className={styles.labelBase}>Daily Goal (pomodoros)</label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            className={styles.inputBase}
             value={localSettings.dailyGoal}
             onChange={(e) =>
               setLocalSettings({
@@ -45,12 +38,10 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#4a4035] mb-1">
-            Work Duration (minutes)
-          </label>
+          <label className={styles.labelBase}>Work Duration (minutes)</label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            className={styles.inputBase}
             value={localSettings.workDuration / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -63,12 +54,10 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#4a4035] mb-1">
-            Short Break (minutes)
-          </label>
+          <label className={styles.labelBase}>Short Break (minutes)</label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            className={styles.inputBase}
             value={localSettings.shortBreak / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -81,12 +70,10 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#4a4035] mb-1">
-            Long Break (minutes)
-          </label>
+          <label className={styles.labelBase}>Long Break (minutes)</label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            className={styles.inputBase}
             value={localSettings.longBreak / 60}
             onChange={(e) =>
               setLocalSettings({
@@ -99,12 +86,10 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-[#4a4035] mb-1">
-            Sessions before long break
-          </label>
+          <label className={styles.labelBase}>Sessions before long break</label>
           <input
             type="number"
-            className="w-full px-3 py-2 border border-[#c9bb95] rounded-lg text-sm text-[#1a1a1a] bg-[#f4ead0] focus:outline-none focus:ring-2 focus:ring-[#d4795a]"
+            className={styles.inputBase}
             value={localSettings.breakAfterSessionCount}
             onChange={(e) =>
               setLocalSettings({
@@ -117,14 +102,11 @@ const SettingsModal = ({ isOpen, onClose }: SettingsModalProps) => {
           />
         </div>
         <div className="flex gap-3 mt-6">
-          <button
-            className="px-4 py-2 rounded-full border border-[#c9bb95] text-[#4a4035] hover:text-[#1a1a1a] text-sm transition-colors"
-            onClick={onClose}
-          >
+          <button className={styles.btnOutline} onClick={onClose}>
             Cancel
           </button>
           <button
-            className="px-4 py-2 rounded-full bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a] text-sm font-medium transition-colors"
+            className={styles.btnPrimarySmall}
             onClick={() => {
               updateSettings(localSettings);
               onClose();

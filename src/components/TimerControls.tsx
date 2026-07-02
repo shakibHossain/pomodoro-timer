@@ -1,5 +1,6 @@
 import { useNotification } from "@/hooks/useNotification";
 import { TimerAction, TimerStatus } from "@/types";
+import { styles } from "@/lib/styles";
 
 interface TimerControlProps {
   status: TimerStatus;
@@ -12,7 +13,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
     <div className="flex gap-3">
       {(status === "idle" || status === "complete") && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a]"
+          className={styles.btnPrimary}
           onClick={() => {
             requestPermission();
             dispatch({ type: "START" });
@@ -23,7 +24,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {status === "running" && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
+          className={styles.btnSecondary}
           onClick={() => dispatch({ type: "PAUSE" })}
         >
           Pause
@@ -31,7 +32,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {status === "paused" && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#f2c94c] hover:bg-[#e0b73a] text-[#1a1a1a]"
+          className={styles.btnPrimary}
           onClick={() => dispatch({ type: "RESUME" })}
         >
           Resume
@@ -39,7 +40,7 @@ const TimerControls = ({ status, dispatch }: TimerControlProps) => {
       )}
       {(status === "paused" || status === "complete") && (
         <button
-          className="px-6 py-3 rounded-full font-medium transition-colors bg-[#ddd0ac] hover:bg-[#d3c399] text-[#1a1a1a] border border-[#c9bb95]"
+          className={styles.btnSecondary}
           onClick={() => dispatch({ type: "RESET" })}
         >
           Reset
