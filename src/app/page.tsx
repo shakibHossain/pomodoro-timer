@@ -19,6 +19,7 @@ export default function Home() {
     workDuration: settings.workDuration,
     shortBreakDuration: settings.shortBreak,
     longBreakDuration: settings.longBreak,
+    breakAfterSessionCount: settings.breakAfterSessionCount,
   });
 
   useEffect(() => {

@@ -43,7 +43,7 @@ export function timerReducer(
       const nextMode =
         state.mode !== "work"
           ? "work" // just finished a break, back to work
-          : newSessionCount % 4 === 0
+          : newSessionCount % action.payload.breakAfterSessionCount === 0
           ? "long-break" // every 4th session -> long break
           : "short-break"; // otherwise -> short break
 

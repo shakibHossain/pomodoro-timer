@@ -8,6 +8,7 @@ const initialState: TimerState = {
   mode: "work",
   status: "idle",
   sessionCount: 0,
+  totalPomodorosCompleted: 0,
 };
 const stateBeforeLongBreak: TimerState = { ...initialState, sessionCount: 3 };
 
@@ -44,6 +45,7 @@ describe("timerReducer", () => {
         workDuration: 1500,
         shortBreakDuration: 300,
         longBreakDuration: 600,
+        breakAfterSessionCount: 4,
       },
     });
     expect(newState.sessionCount).toEqual(initialState.sessionCount + 1);
@@ -51,14 +53,19 @@ describe("timerReducer", () => {
     expect(newState.totalSecondsRemaining).toEqual(300);
   });
   it("COMPLETE does not increment sessionCount after a break", () => {
-  const breakState: TimerState = { ...initialState, mode: 'short-break' }
-  const newState = timerReducer(breakState, {
-    type: "COMPLETE",
-    payload: { workDuration: 1500, shortBreakDuration: 300, longBreakDuration: 600 },
-  })
-  expect(newState.sessionCount).toBe(breakState.sessionCount)
-  expect(newState.mode).toBe('work')
-})
+    const breakState: TimerState = { ...initialState, mode: "short-break" };
+    const newState = timerReducer(breakState, {
+      type: "COMPLETE",
+      payload: {
+        workDuration: 1500,
+        shortBreakDuration: 300,
+        longBreakDuration: 600,
+        breakAfterSessionCount: 4,
+      },
+    });
+    expect(newState.sessionCount).toBe(breakState.sessionCount);
+    expect(newState.mode).toBe("work");
+  });
   it("SWITCH_MODE updates mode and resets seconds", () => {
     const newState = timerReducer(initialState, {
       type: "SWITCH_MODE",
@@ -70,13 +77,14 @@ describe("timerReducer", () => {
       newState.totalSecondsInSession
     );
   });
-  it("COMPLETE switches to long-break after every 4th work session", () => {
+  it("COMPLETE switches to long-break after every Nth work session based on breakAfterSessionCount", () => {
     const newState = timerReducer(stateBeforeLongBreak, {
       type: "COMPLETE",
       payload: {
         workDuration: 1500,
         shortBreakDuration: 300,
         longBreakDuration: 600,
+        breakAfterSessionCount: 4,
       },
     });
     expect(newState.mode).toBe("long-break");

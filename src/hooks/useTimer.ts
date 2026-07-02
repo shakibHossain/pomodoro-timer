@@ -7,12 +7,14 @@ interface TimerOptions {
   workDuration: number;
   shortBreakDuration: number;
   longBreakDuration: number;
+  breakAfterSessionCount: number;
 }
 
 export function useTimer({
   workDuration,
   shortBreakDuration,
   longBreakDuration,
+  breakAfterSessionCount,
 }: TimerOptions) {
   const { notify } = useNotification();
 
@@ -47,6 +49,7 @@ export function useTimer({
           workDuration,
           shortBreakDuration,
           longBreakDuration,
+          breakAfterSessionCount,
         },
       });
       notify(

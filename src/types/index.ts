@@ -45,5 +45,6 @@ export type TimerAction =
         workDuration: number;
         shortBreakDuration: number;
         longBreakDuration: number;
+        breakAfterSessionCount: number;
       };
     };
